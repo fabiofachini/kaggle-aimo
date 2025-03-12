@@ -16,8 +16,8 @@ wandb.init(
     name="deepseek_lora_finetune",  
     config={  
         "model": "DeepSeek-R1-Distill-Qwen-7B",
-        "batch_size": 4,
-        "gradient_accumulation_steps": 4,
+        "batch_size": 2,
+        "gradient_accumulation_steps": 8,
         "epochs": 3,
         "learning_rate": 5e-5,
         "precision": "fp16",
@@ -68,8 +68,8 @@ model = get_peft_model(model, config)
 # 🔹 Configuração dos argumentos de treinamento
 training_args = TrainingArguments(
     output_dir="./results",
-    per_device_train_batch_size=4,
-    gradient_accumulation_steps=4,
+    per_device_train_batch_size=2,
+    gradient_accumulation_steps=8,
     num_train_epochs=3,
     save_strategy="epoch",
     logging_dir="./logs",
